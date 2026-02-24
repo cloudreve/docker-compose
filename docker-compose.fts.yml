@@ -1,0 +1,35 @@
+# Full-text search addon: Apache Tika + Meilisearch
+#
+# Usage:
+#   Community:
+#     docker compose -f docker-compose.yml -f docker-compose.fts.yml up -d
+#   Pro:
+#     docker compose -f docker-compose.yml -f docker-compose.pro.yml -f docker-compose.fts.yml up -d
+#
+# Set MEILI_MASTER_KEY in .env or export it as an environment variable.
+# Generate one with: openssl rand -hex 32
+
+services:
+  cloudreve:
+    depends_on:
+      tika:
+        condition: service_started
+      meilisearch:
+        condition: service_started
+
+  tika:
+    image: apache/tika:latest
+    container_name: tika
+    restart: unless-stopped
+
+  meilisearch:
+    image: getmeili/meilisearch:latest
+    container_name: meilisearch
+    restart: unless-stopped
+    environment:
+      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
+    volumes:
+      - meili_data:/meili_data
+
+volumes:
+  meili_data:

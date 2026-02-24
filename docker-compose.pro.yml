@@ -1,0 +1,15 @@
+# Pro edition override: apply on top of docker-compose.yml
+#
+# Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.pro.yml up -d
+#
+# Prerequisites:
+#   1. Log in to the Pro image registry:
+#      docker login -u <username> -p <password> cloudreve.azurecr.io
+#   2. Set CR_LICENSE_KEY in .env or export it as an environment variable.
+
+services:
+  cloudreve:
+    image: cloudreve.azurecr.io/cloudreve/pro:v4
+    environment:
+      - CR_LICENSE_KEY=${CR_LICENSE_KEY}
