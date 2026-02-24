@@ -1,3 +1,3 @@
 # Cloudreve Docker Compoase
 
-Please refer to https://docs.cloudreve.org/zh/overview/deploy/docker-compose
+Please refer to https://docs.cloudreve.org/overview/deploy/docker-compose
