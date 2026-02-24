@@ -11,6 +11,12 @@
 
 services:
   cloudreve:
+    environment:
+      - CR_SETTING_DEFAULT_fts_meilisearch_api_key=${MEILI_MASTER_KEY}
+      - CR_SETTING_DEFAULT_fts_meilisearch_endpoint=http://meilisearch:7700
+      - CR_SETTING_DEFAULT_fts_enabled=1
+      - CR_SETTING_DEFAULT_fts_tika_endpoint=http://tika:9998
+
     depends_on:
       tika:
         condition: service_started
