@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
 
   meilisearch:
-    image: getmeili/meilisearch:latest
+    image: getmeili/meilisearch:v1.37
     container_name: meilisearch
     restart: unless-stopped
     environment:
